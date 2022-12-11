@@ -30,21 +30,27 @@ if (passwordChars.length === 0) {
   return;
 }
 
+
 // Password length prompt
 var passwordLength = prompt("Enter a password length between 12 and 32");
 // Validating that input is within specified range
-if (isNaN(passwordLength) || passwordLength < 12 || passwordLength > 32) {
+var passwordLengthNum = parseInt(passwordLength);
+if (isNaN(passwordLengthNum) || passwordLengthNum < 12 || passwordLengthNum > 32) {
   alert("Invalid input, please enter a number between 12 and 32");
+  console.log(passwordLengthNum);
   return;
 }
 
-// Password generation with for loop
 
-for (var i = 0; i < passwordLength; i++) {
+// Password generation with for loop
+var password = "";
+for (var i = 0; i < passwordLengthNum; i++) {
   var randomIndex = Math.floor(Math.random() * passwordChars.length);
   var randomChar = passwordChars[randomIndex];
   password += randomChar;
 }
+
+console.log("Generated password: " + password);
 
 var passwordInput = document.querySelector("#password");
 passwordInput.value = password;
